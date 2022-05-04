@@ -1,7 +1,9 @@
 package com.app.mvvmroomdb.ui
 
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -75,15 +77,15 @@ class Page2 : Fragment() {
     private fun adddata() {
         val firstname = binding.firstname.text.toString()
         val lastname = binding.lastname.text.toString()
-        val age = binding.age.text.toString()
+        val age = binding.age.text
 
         if (inputcheck(firstname, lastname, age)){
             if (currentUser!=null){
-                val user = User(currentUser?.id!!, firstname, lastname, Integer.parseInt(age))
+                val user = User(currentUser?.id!!, firstname, lastname, Integer.parseInt(age.toString()))
                 mUserViewModel.updateUser(user)
                 showToast("Data Updated.")
             }else{
-                val user = User(0, firstname, lastname, Integer.parseInt(age))
+                val user = User(0, firstname, lastname, Integer.parseInt(age.toString()))
                 mUserViewModel.addUser(user)
                 showToast("Data Added.")
             }
@@ -108,8 +110,8 @@ class Page2 : Fragment() {
         binding.age.text = null
     }
 
-    private fun inputcheck(firstname: String, lastname: String, age: String): Boolean{
-        return !(TextUtils.isEmpty(firstname) && TextUtils.isEmpty(lastname) && TextUtils.isEmpty(age))
+    private fun inputcheck(firstname: String, lastname: String, age: Editable): Boolean {
+        return !(TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || age.isEmpty())
     }
 
 

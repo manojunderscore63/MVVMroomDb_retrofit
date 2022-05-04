@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/page1"
         android:name="com.app.mvvmroomdb.ui.Page1"
-        android:label="fragment_page1"
+        android:label="Room db"
         tools:layout="@layout/fragment_page1" >
         <action
             android:id="@+id/action_page1_to_page2"
@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/page3"
         android:name="com.app.mvvmroomdb.ui.Page3"
-        android:label="fragment_page3"
+        android:label="Retrofit Page"
         tools:layout="@layout/fragment_page3" >
         <action
             android:id="@+id/action_page3_to_page1"
